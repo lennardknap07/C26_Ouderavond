@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoornbeeck College | Over onze school</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header id= "hoornbeeck" class="hero-hoornbeeck">
+        <div class="header-logo-kaart">
+            <img src="img/HBC-logo.png" alt="Hoornbeeck College">
+        </div>
+        <div class= "hero-hoornbeeck-content">
+            <h1>Hoornbeeck College</h1>
+            <p class="hero-hoornbeeck-tekst">Ontdek onze school, locaties en vakgebieden.</p>
+                <a href="homepagina.html" class="navigatie-item home-knop"><span>Home</span></a>
+        </div>
+    </header>
+
+    <main class="pagina-indeling">
+        <nav class="navigatie">
+            <a href="Hoornbeeck.html" class="navigatie-item"><span>Hoornbeeck</span></a>
+            <a href="opleidingen.html" class="navigatie-item"><span>Opleidingen</span></a>
+            <a href="gallerij.html" class="navigatie-item"><span>Gallerij</span></a>
+            <a href="over ons.html" class="navigatie-item"><span>Over ons</span></a>
+            <a href="contact.html" class="navigatie-item"><span>Contact</span></a>
+        </nav>
+
+        <div class="pagina-inhoud">
+            <div class="hoornbeeck-content-grid">
+                <section class="locaties hoornbeeck-locaties">
+                    <h2>Onze locaties</h2>
+                    <p>Je vindt het Hoornbeeck College in:</p>
+                    <ul>
+                        <li>Kampen</li>
+                        <li>Amersfoort</li>
+                        <li>Apeldoorn</li>
+                        <li>Goes</li>
+                        <li>Gouda</li>
+                        <li>Rotterdam</li>
+                    </ul>
+                </section>
+
+                <section class="hoornbeeck-sectoren">
+                    <h2>Vakgebieden</h2>
+                    <p>Je kunt kiezen uit opleidingen in verschillende richtingen, zoals:</p>
+                    <ul>
+                        <li>Zorg</li>
+                        <li>Welzijn</li>
+                        <li>Economie en ondernemen</li>
+                        <li>Techniek en ICT</li>
+                        <li>Onderwijs</li>
+                    </ul>
+                </section>
+
+                <button type="button" class="afbeelding-knop afbeelding-boven">
+                    <img src="img/HCAmersfoort-afdrukkwaliteit-70.jpg" alt="Het Hoornbeeck College">
+                </button>
+                <button type="button" class="afbeelding-knop afbeelding-onder">
+                    <img src="img/Hoornbeeck-Apeldoorn-2-ceesvdwal_92.jpg" alt="Impressie van het Hoornbeeck College">
+                </button>
+            </div>
+            <div class="zoomvenster" aria-hidden="true">
+                <button type="button" class="zoom-sluiten" aria-label="Sluit afbeelding">&times;</button>
+                <img class="zoom-afbeelding" src="" alt="">
+            </div>
+        </div>
+    </main>
+
+    <a href="homepagina.html#agenda" class="horizontale-tijdlijn hoornbeeck-tijdlijn" aria-label="Bekijk de agenda op de homepage">
+        <div class="horizontaal-onderdeel">
+            <time datetime="19:15">19:15</time>
+            <span class="horizontale-bol"></span>
+        </div>
+        <div class="horizontaal-onderdeel">
+            <time datetime="19:30">19:30</time>
+            <span class="horizontale-bol"></span>
+        </div>
+        <div class="horizontaal-onderdeel">
+            <time datetime="19:45">19:45</time>
+            <span class="horizontale-bol"></span>
+        </div>
+        <div class="horizontaal-onderdeel">
+            <time datetime="21:00">21:00</time>
+            <span class="horizontale-bol"></span>
+        </div>
+    </a>
+
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="img/HBC-logo.png" alt="Hoornbeeck College">
+        </div>
+        <div class="footer-contact">
+            <span>Lennard Knap</span>
+            <span class="contact-item">53519@hoornbeeck.nl</span>
+            <span class="contact-item">06 30493844</span>
+        </div>
+    </footer>
+
+    <script>
+        const afbeeldingKnoppen = document.querySelectorAll(".afbeelding-knop");
+        const zoomvenster = document.querySelector(".zoomvenster");
+        const zoomAfbeelding = document.querySelector(".zoom-afbeelding");
+        const zoomSluiten = document.querySelector(".zoom-sluiten");
+
+        function sluitZoom() {
+            zoomvenster.classList.remove("is-open");
+            zoomvenster.setAttribute("aria-hidden", "true");
+        }
+
+        afbeeldingKnoppen.forEach((knop) => {
+            knop.addEventListener("click", () => {
+                const afbeelding = knop.querySelector("img");
+                zoomAfbeelding.src = afbeelding.src;
+                zoomAfbeelding.alt = afbeelding.alt;
+                zoomvenster.classList.add("is-open");
+                zoomvenster.setAttribute("aria-hidden", "false");
+            });
+        });
+
+        zoomSluiten.addEventListener("click", sluitZoom);
+        zoomvenster.addEventListener("click", (event) => {
+            if (event.target === zoomvenster) {
+                sluitZoom();
+            }
+        });
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                sluitZoom();
+            }
+        });
+    </script>
+    
+</body>
+</html>

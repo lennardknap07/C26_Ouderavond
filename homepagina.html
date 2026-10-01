@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website-Lennard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header id= "home" class="hero">
+        <div class="header-logo-kaart">
+            <img src="img/HBC-logo.png" alt="Hoornbeeck College">
+        </div>
+        <div class= "hero-content">
+            <h1>Welkom <span class="tekst-lichtblauw">op mijn website!</span></h1>
+             <p class="hero-tekst">
+                Ontdek onze <span class="accent"></span>opleiding, en wat <span class= "accent"></span>hoornbeeck te bieden heeft!</p>
+                <a href="#home" class="navigatie-item home-knop"><span>Home</span></a>
+        </div>
+    </header>
+
+    <main class="pagina-indeling">
+    <nav class="navigatie">
+        <a href="Hoornbeeck.html" class="navigatie-item"><span>Hoornbeeck</span></a>
+        <a href="opleidingen.html" class="navigatie-item"><span>Opleidingen</span></a>
+        <a href="gallerij.html" class="navigatie-item"><span>Gallerij</span></a>
+        <a href="over ons.html" class="navigatie-item"><span>Over ons</span></a>
+        <a href="contact.html" class="navigatie-item"><span>Contact</span></a>
+    </nav>
+
+    <div class="pagina-inhoud">
+    <section class="voorpagina-grid">
+    <div class="welkom-tekst">
+        <h2>Welkom op mijn website!</h2>
+        <p>Leuk dat je een kijkje neemt. Op deze website vertel ik je meer over het Hoornbeeck college, de opleidingen, en vertel ik je meer over de ICT afdeling. En natuurlijk vertel ik wie wij zijn bij <a href="over ons.html">over ons</a></p>
+
+    </div>
+    
+    
+    
+    
+    
+    <div class="zoomvenster" aria-hidden="true">
+        <button type="button" class="zoom-sluiten" aria-label="Sluit afbeelding">&times;</button>
+        <img class="zoom-afbeelding" src="" alt="">
+    </div>
+
+        <section id="agenda" class="agenda">
+            <h3>Agenda van de Avond</h3>
+            <div class="tijdlijn">
+                <div class="tijdlijn-onderdeel">
+                    <time datetime="19:15">19:15</time>
+                    <div class="omschrijving">Inloop van de avond</div>
+                </div>
+
+                <div class="tijdlijn-onderdeel">
+                    <time datetime="19:30">19:30</time>
+                    <div class="omschrijving">Opening van de avond door de docenten</div>
+                </div>
+
+                <div class="tijdlijn-onderdeel">
+                    <time datetime="19:45">19:45</time>
+                    <div class="omschrijving">Studenten aan het woord</div>
+                </div>
+
+                <div class="tijdlijn-onderdeel">
+                    <time datetime="21:00">21:00</time>
+                    <div class="omschrijving">Afsluiting met een hapje en een drankje</div>
+                </div>
+            </div>
+        </section>
+
+            <button type="button" class="afbeelding-knop afbeelding-boven">
+                <img src="img/HCK_2020-1.jpg" alt="HCK 2020">
+            </button>
+            <button type="button" class="afbeelding-knop afbeelding-onder">
+                <img src="img/OIP.webp" alt="OIP afbeelding">
+            </button>
+    </section>
+    </div>
+    </main>
+
+    <a href="#agenda" class="horizontale-tijdlijn" aria-label="Ga naar de agenda">
+        <div class="horizontaal-onderdeel">
+            <time datetime="19:15">19:15</time>
+            <span class="horizontale-bol"></span>
+        </div>
+        <div class="horizontaal-onderdeel">
+            <time datetime="19:30">19:30</time>
+            <span class="horizontale-bol"></span>
+        </div>
+        <div class="horizontaal-onderdeel">
+            <time datetime="19:45">19:45</time>
+            <span class="horizontale-bol"></span>
+        </div>
+        <div class="horizontaal-onderdeel">
+            <time datetime="21:00">21:00</time>
+            <span class="horizontale-bol"></span>
+        </div>
+    </a>
+
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="img/HBC-logo.png" alt="Hoornbeeck College">
+        </div>
+        <div class="footer-contact">
+            <span>Lennard Knap</span>
+            <span class="contact-item">53519@hoornbeeck.nl</span>
+            <span class="contact-item">06 30493844</span>
+        </div>
+    </footer>
+
+    <script>
+        const afbeeldingKnoppen = document.querySelectorAll(".afbeelding-knop");
+        const zoomvenster = document.querySelector(".zoomvenster");
+        const zoomAfbeelding = document.querySelector(".zoom-afbeelding");
+        const zoomSluiten = document.querySelector(".zoom-sluiten");
+
+        function sluitZoom() {
+            zoomvenster.classList.remove("is-open");
+            zoomvenster.setAttribute("aria-hidden", "true");
+        }
+
+        afbeeldingKnoppen.forEach((knop) => {
+            knop.addEventListener("click", () => {
+                const afbeelding = knop.querySelector("img");
+                zoomAfbeelding.src = afbeelding.src;
+                zoomAfbeelding.alt = afbeelding.alt;
+                zoomvenster.classList.add("is-open");
+                zoomvenster.setAttribute("aria-hidden", "false");
+            });
+        });
+
+        zoomSluiten.addEventListener("click", sluitZoom);
+        zoomvenster.addEventListener("click", (event) => {
+            if (event.target === zoomvenster) {
+                sluitZoom();
+            }
+        });
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                sluitZoom();
+            }
+        });
+    </script>
+
+</body>
+
+
+</html>
