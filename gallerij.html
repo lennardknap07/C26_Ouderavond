@@ -8,7 +8,7 @@
 </head>
 <body>
     <header id="gallerij" class="hero-hoornbeeck">
-        <div class="header-logo-kaart">
+    <div class="header-logo-kaart">
             <img src="img/HBC-logo.png" alt="Hoornbeeck College">
         </div>
         <div class="hero-hoornbeeck-content">
@@ -16,16 +16,45 @@
             <p class="hero-hoornbeeck-tekst">Bekijk foto's van het Hoornbeeck College.</p>
             <a href="index.html" class="navigatie-item home-knop"><span>Home</span></a>
         </div>
-        
+
     </header>
-    
-    <nav class="navigatie">
-        <a href="Hoornbeeck.html" class="navigatie-item"><span>Hoornbeeck</span></a>
-        <a href="opleidingen.html" class="navigatie-item"><span>Opleidingen</span></a>
-        <a href="gallerij.html" class="navigatie-item"><span>Gallerij</span></a>
-        <a href="over ons.html" class="navigatie-item"><span>Over ons</span></a>
-        <a href="contact.html" class="navigatie-item"><span>Contact</span></a>
-    </nav>
+
+    <main class="pagina-indeling">
+        <nav class="navigatie">
+            <a href="Hoornbeeck.html" class="navigatie-item"><span>Hoornbeeck</span></a>
+            <a href="opleidingen.html" class="navigatie-item"><span>Opleidingen</span></a>
+            <a href="gallerij.html" class="navigatie-item"><span>Gallerij</span></a>
+            <a href="over ons.html" class="navigatie-item"><span>Over ons</span></a>
+            <a href="contact.html" class="navigatie-item"><span>Contact</span></a>
+        </nav>
+
+        <div class="pagina-inhoud">
+            <div class="gallerij-grid">
+                <div class="gallerij-video-item">
+                    <div class="gallerij-video">
+                        <iframe loading="lazy" src="https://www.canva.com/design/DAHS1A4clk0/cCKoz7cOv-g58F0i7QrjSw/view?embed" title="Werkweek Duitsland" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
+                    </div>
+                    <p class="gallerij-bijschrift"><a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAHS1A4clk0&#x2F;cCKoz7cOv-g58F0i7QrjSw&#x2F;view?utm_content=DAHS1A4clk0&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">Werkweek Duitsland</a> door 53519</p>
+                </div>
+                <button type="button" class="gallerij-foto" aria-label="Vergroot foto 1"><img src="img/foto-gallerij-01.jpg" alt="Foto 1 van de fotogalerij" loading="lazy"></button>
+                <button type="button" class="gallerij-foto" aria-label="Vergroot foto 2"><img src="img/foto-gallerij-02.jpg" alt="Foto 2 van de fotogalerij" loading="lazy"></button>
+                <button type="button" class="gallerij-foto" aria-label="Vergroot foto 3"><img src="img/foto-gallerij-03.jpg" alt="Foto 3 van de fotogalerij" loading="lazy"></button>
+                <button type="button" class="gallerij-foto" aria-label="Vergroot foto 4"><img src="img/foto-gallerij-04.jpg" alt="Foto 4 van de fotogalerij" loading="lazy"></button>
+                <button type="button" class="gallerij-foto" aria-label="Vergroot foto 5"><img src="img/foto-gallerij-05.jpg" alt="Foto 5 van de fotogalerij" loading="lazy"></button>
+                <button type="button" class="gallerij-foto" aria-label="Vergroot foto 6"><img src="img/foto-gallerij-06.jpg" alt="Foto 6 van de fotogalerij" loading="lazy"></button>
+                <button type="button" class="gallerij-foto" aria-label="Vergroot foto 7"><img src="img/foto-gallerij-07.jpg" alt="Foto 7 van de fotogalerij" loading="lazy"></button>
+                <button type="button" class="gallerij-foto" aria-label="Vergroot foto 8"><img src="img/foto-gallerij-08.jpg" alt="Foto 8 van de fotogalerij" loading="lazy"></button>
+                <button type="button" class="gallerij-foto" aria-label="Vergroot foto 9"><img src="img/foto-gallerij-09.jpg" alt="Foto 9 van de fotogalerij" loading="lazy"></button>
+                <button type="button" class="gallerij-foto" aria-label="Vergroot foto 10"><img src="img/foto-gallerij-10.jpg" alt="Foto 10 van de fotogalerij" loading="lazy"></button>
+                <button type="button" class="gallerij-foto" aria-label="Vergroot foto 11"><img src="img/foto-gallerij-11.jpg" alt="Foto 11 van de fotogalerij" loading="lazy"></button>
+                <button type="button" class="gallerij-foto" aria-label="Vergroot foto 12"><img src="img/foto-gallerij-12.jpg" alt="Foto 12 van de fotogalerij" loading="lazy"></button>
+            </div>
+            <div class="zoomvenster" role="dialog" aria-modal="true" aria-label="Vergrote galerijfoto" aria-hidden="true">
+                <button type="button" class="zoom-sluiten" aria-label="Sluit afbeelding">&times;</button>
+                <img class="zoom-afbeelding" src="" alt="">
+            </div>
+        </div>
+    </main>
 
     <a href="index.html#agenda" class="horizontale-tijdlijn" aria-label="Bekijk de agenda op de homepage">
         <div class="horizontaal-onderdeel">
@@ -57,5 +86,42 @@
             <span class="contact-item">06 30493844</span>
         </div>
     </footer>
+    <script>
+        const fotoKnoppen = document.querySelectorAll(".gallerij-foto");
+        const zoomvenster = document.querySelector(".zoomvenster");
+        const zoomAfbeelding = document.querySelector(".zoom-afbeelding");
+        const zoomSluiten = document.querySelector(".zoom-sluiten");
+        let actieveFotoKnop;
+
+        function sluitZoom() {
+            zoomvenster.classList.remove("is-open");
+            zoomvenster.setAttribute("aria-hidden", "true");
+            actieveFotoKnop?.focus();
+        }
+
+        fotoKnoppen.forEach((knop) => {
+            knop.addEventListener("click", () => {
+                const afbeelding = knop.querySelector("img");
+                actieveFotoKnop = knop;
+                zoomAfbeelding.src = afbeelding.src;
+                zoomAfbeelding.alt = afbeelding.alt;
+                zoomvenster.classList.add("is-open");
+                zoomvenster.setAttribute("aria-hidden", "false");
+                zoomSluiten.focus();
+            });
+        });
+
+        zoomSluiten.addEventListener("click", sluitZoom);
+        zoomvenster.addEventListener("click", (event) => {
+            if (event.target === zoomvenster) {
+                sluitZoom();
+            }
+        });
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                sluitZoom();
+            }
+        });
+    </script>
 </body>
 </html>
