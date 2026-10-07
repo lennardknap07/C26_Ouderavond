@@ -7,13 +7,26 @@
     --blokken: #e0f4fc;
     --blokken2: #df5a53;
     --blokken3: #0092f0;
-    --accent: var(--blokken2);
 }
 
 /* Basis */
+html, body {
+    min-height: 100%;
+}
+
 body {
     margin: 0;
     font-size: clamp(16px, 1vw, 18px);
+}
+
+.page-shell {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.page-shell > main {
+    flex: 1 0 auto;
 }
 
 h1 {
@@ -24,10 +37,6 @@ h1 {
 
 .tekst-lichtblauw {
     color: var(--blokken);
-}
-
-.accent {
-    font-weight: bold;
 }
 
 /* Headers */
@@ -121,14 +130,12 @@ h1 {
 
 .contact-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: clamp(20px, 2vw, 32px);
-    align-items: start;
-    max-width: 800px;
-}
-
-.contact-grid .contact-form {
-    grid-area: auto;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    justify-content: center;
+    gap: clamp(26px, 3vw, 52px);
+    align-items: stretch;
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
 .over-ons-grid {
@@ -259,24 +266,32 @@ h1 {
     margin-top: 0;
 }
 
+.contact-form {
+    grid-area: auto;
+    padding: clamp(20px, 2vw, 32px);
+    box-sizing: border-box;
+}
+
 .contact-form form {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
 }
 
 .contact-form label {
     font-weight: bold;
+    margin-top: 6px;
 }
 
 .contact-form input,
 .contact-form textarea {
     width: 100%;
-    padding: 12px;
+    padding: 12px 14px;
     box-sizing: border-box;
     border: 1px solid var(--tertiary);
-    border-radius: 6px;
+    border-radius: 8px;
     font: inherit;
+    background: rgba(255, 255, 255, 0.25);
 }
 
 .contact-form textarea {
@@ -294,6 +309,11 @@ h1 {
     font: inherit;
     font-weight: bold;
     cursor: pointer;
+}
+
+.contactgegevens {
+    padding: clamp(20px, 2vw, 32px);
+    box-sizing: border-box;
 }
 
 .contactgegevens-adres {
@@ -501,12 +521,6 @@ h1 {
     border-radius: 16px;
 }
 
-@media (max-width: 700px) {
-    .gallerij-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
 .zoomvenster {
     position: fixed;
     inset: 0;
@@ -596,7 +610,7 @@ h1 {
     justify-content: space-between;
     align-items: center;
     gap: clamp(24px, 2.5vw, 44px);
-    margin-top: clamp(32px, 3vw, 52px);
+    margin-top: auto;
     padding: clamp(24px, 2.5vw, 44px) clamp(24px, 3vw, 56px);
     box-sizing: border-box;
     background-color: #e3f0f0da;
@@ -657,6 +671,10 @@ h1 {
 }
 
 @media (max-width: 700px) {
+    .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
     .pagina-indeling.contact-indeling {
         grid-template-columns: minmax(0, 1fr);
     }
@@ -701,11 +719,6 @@ h1 {
         margin-top: clamp(64px, 12vw, 100px);
         padding-right: 8px;
         padding-left: 8px;
-    }
-
-    .horizontale-tijdlijn::before {
-        right: 14%;
-        left: 14%;
     }
 
     .footer {
